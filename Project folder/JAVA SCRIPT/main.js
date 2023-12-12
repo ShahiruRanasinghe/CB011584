@@ -47,6 +47,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
   });
 
+  //check loyalty points button in hotel booking****************************************************************************
+  document.getElementById('checkLoyaltyPonints').addEventListener('click', function () {
+    // Retrieve values from form elements
+    const roomType = document.querySelector('input[name="roomType"]:checked').value;
+    const numRooms = document.getElementById('numRooms_hb').value;
+    const numNights = document.getElementById('duration').value;
+    const extras = document.querySelectorAll('input[name="extras"]:checked');
+    const loyaltyPoints = document.getElementById('loyaltyPoints').value;
+    const promoCode = document.getElementById('promoCode').value;
+    
+    let Points = 0;
+    if (numRooms > 4) {
+        Points =(numRooms-4)* 20;
+       
+    }
+
+    alert(`The loyalty points balance is ${Points}`);
+
+    const loyalty_hotel = `the loyalty points balance is ${Points}`;
+
+    let loyaltyhotel_serialized=JSON.stringify(loyalty_hotel);
+    
+    localStorage.setItem("loyalty",loyaltyhotel_serialized);
+    console.log("The loyalty points balance is saved!");
+
+
+
+  });
+
 
   //Add to favourites button in hotel booking********************************************************************************************************************
 
